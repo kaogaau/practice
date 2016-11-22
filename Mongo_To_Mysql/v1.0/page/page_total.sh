@@ -1,0 +1,1 @@
+ruby  /home/kaogaau/mongo_to_mysql/page/page_total.rb

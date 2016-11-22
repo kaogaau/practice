@@ -1,0 +1,30 @@
+production:
+  # Configure available database clients. (required)
+  sessions:
+    # Defines the default client. (required)
+    default:
+      # Defines the name of the default database that Mongoid can connect to.
+      # (required).
+      database: fb_rawdata
+      # Provides the hosts the default client can connect to. Must be an array
+      # of host:port pairs. (required)
+      hosts:
+        - 220.132.97.119:37017
+      user: 'admin'
+      password: '12345'
+      #options:
+        # Change the default write concern. (default = { w: 1 })
+        #write:
+          #w: 1
+
+        # Change the default read preference. Valid options for mode are: :secondary,
+        # :secondary_preferred, :primary, :primary_preferred, :nearest
+        # (default: primary)
+        #read:
+          #mode: :secondary_preferred
+
+        # The name of the user for authentication.
+        #user: 'admin'
+
+        # The password of the user for authentication.
+       # password: '12345'
