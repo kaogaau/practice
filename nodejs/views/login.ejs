@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    <% include includes/scripts.ejs %>
+    <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      /**
+      margin-top: -100px;
+      <script type="text/javascript" src='/js/semantic.min.js'></script>
+      **/
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+</head>
+<body>
+  <div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal image header">
+      <div class="content">
+        Bacon CMS
+      </div>
+    </h2>
+    <form class="ui form large">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="email" placeholder="E-mail address" id="loginForm_email">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password" id="loginForm_password">
+          </div>
+        </div>
+        <div class="ui fluid large teal submit button"  id="btn_login">Login</div>
+      </div>
+      <div class="ui error message"></div>
+    </form>
+
+    <div class="ui message" style="display:none">
+
+    </div>
+
+  </div>
+</div>
+</body>
+<script>
+  $('#btn_login').on("click", function(){
+    ajaxLogin($('#loginForm_email').val(), $('#loginForm_password').val());
+  })
+
+  function ajaxLogin(email, password){
+    $('#btn_login').addClass('loading');
+    $.ajax({
+      url: "/login",
+      type: "POST",
+      data: {
+        email: email,
+        password: password
+      },
+      dataType: 'json',
+      success: function (response) {
+        console.log(response);
+        $('#btn_login').removeClass('loading');
+        location.reload();
+      },
+      error: function (response){
+        $('#btn_login').removeClass('loading');
+        alert(response.responseText)
+        console.log(response.responseText)
+      }
+    })
+  };
+</script>
+</html>

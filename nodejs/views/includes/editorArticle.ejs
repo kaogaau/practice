@@ -1,0 +1,38 @@
+<h2>新增文章</h2>
+<div class="ui segment">
+  <div class="ui fluid input">
+    <input type="text" placeholder="文章標題" id="title">
+  </div>
+  </div>
+
+
+      <textarea name="content" id="content" rows="10" cols="80"></textarea>
+      <a class="ui button" onclick = 'processData()'>送出</a>
+
+  <div class="ui divider"></div>
+</div>
+
+<script>
+CKEDITOR.replace( 'content', {});
+function processData(){
+ // getting data
+ var title = $('#title').val();
+ var data = CKEDITOR.instances.content.getData();
+ $.ajax({
+   url: "/api/addarticle",
+   type: "POST",
+   data: {
+     title: title,
+     data: data
+   },
+   dataType: 'json',
+   success: function (response) {
+     alert('good')
+     console.log(response);
+   },
+   error: function (response){
+
+   }
+ })
+}
+</script>

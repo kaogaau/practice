@@ -1,0 +1,100 @@
+<h2>BaconUsers Account</h2>
+<div class="ui segment">
+  <div id="context1">
+  <div class="ui red two item inverted menu">
+    <a class="item active " data-tab="first">帳號名單</a>
+    <a class="item" data-tab="second">建立帳號</a>
+  </div>
+  <div class="ui tab segment active" data-tab="first">
+    <table id="baconapp_users_table" class="ui red table" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Gender</th>
+                  <th>Birthday</th>
+                  <th>City</th>
+                  <th>Vip</th>
+              </tr>
+          </thead>
+      </table>
+  </div>
+  <div class="ui tab segment" data-tab="second">
+    <div class="ui top attached tabular menu">
+      <a class="item active" data-tab="second/a">單一建立</a>
+      <a class="item" data-tab="second/b">批量建立</a>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="second/a">
+
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="second/b">
+      <div class="ui two column centered grid">
+        <div class="column">
+          <div class="ui fluid action input">
+            <input type="text" placeholder="" id="input_SheetMale">
+            <div class="ui blue button" id="btn_SheetMale">Submit</div>
+          </div>
+          <div class="ui divider"></div>
+          <div class="ui fluid action input">
+            <input type="text" placeholder="">
+            <div class="ui pink button" id="btn_SheetFemale">Submit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui divider"></div>
+</div>
+<img id="imgSource"/>
+<img id="imgCompress" style="display:none"/>
+<script>
+$('#context1 .menu .item')
+  .tab({
+    context: $('#context1')
+  })
+;
+
+$(document).ready(function() {
+    $('#baconapp_users_table').DataTable( {
+        "ajax": "/api/getBaconUsers",
+        "columns": [
+            { "data": "photourl", render: getImg, "bSortable": false, "bSearchable": false },
+            { "data": "displayname" },
+            { "data": "email" },
+            { "data": "gender", render: getSex },
+            { "data": "birthday" },
+            { "data": "city" },
+            { "data": "vip", render: getVIP }
+        ]
+    } );
+} );
+
+function getImg(data, type, full, meta){
+  return "<img style='height:35px;width:35px;border-radius: 50%' src=" + data + "/>";
+};
+
+function getSex(data, type, full, meta){
+  if(data == 'f'){
+    return "<i class='female icon' style='color:#FF1493'></i><text style='display:none'>女</text>";
+    //return '女'
+  }else{
+    return "<i class='male icon' style='color:#0E6EB8'></i><text style='display:none'>男</text>";
+    //return '男'
+  }
+};
+
+function getVIP(data, type, full, meta){
+  if(data == true){
+    return "<i class='star icon' style='color:#FFD700'></i><text style='display:none'>true</text>";
+  }else if(data == false){
+    return "<i class='star icon'></i><text style='display:none'>false</text>";
+  }else{
+    return "";
+  }
+};
+
+
+
+</script>

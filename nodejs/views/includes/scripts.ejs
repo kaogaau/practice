@@ -1,0 +1,51 @@
+<link rel='stylesheet' href='/css/semantic.min.css'/>
+<link rel='stylesheet' href='/css/dataTables.semanticui.min.css'/>
+<link rel='stylesheet' href='/css/stylesheet.css'/>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script type="text/javascript" src='/js/jquery.dataTables.min.js'></script>
+<script type="text/javascript" src='/js/dataTables.semanticui.min.js'></script>
+<script type="text/javascript" src='/js/semantic.min.js'></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCLJR_3ZO0ssayQ2T4WaZcz3pvgZA1MJU">
+</script>
+<script type="text/javascript">
+        var jic = {
+            compress: function (source_img_obj, quality, output_format) {
+                var mime_type = "image/jpeg";
+                if (output_format == "png") mime_type = "image/png";
+                var canvas = document.createElement('canvas');
+                //naturalWidth真实图片的宽度
+                canvas.width = source_img_obj.naturalWidth;
+                canvas.height = source_img_obj.naturalHeight;
+                var ctx = canvas.getContext("2d").drawImage(source_img_obj, 0, 0);
+                var compressData = canvas.toDataURL(mime_type, quality / 100);
+                return compressData;
+            }
+        }
+    </script>
+
+<script>
+
+var APPFirebaseConfig = {
+  apiKey: "AIzaSyBYTZDmeWcR9MEdiUTdgZGb80nDWYLnCSk",
+  authDomain: "kjyl-150415.firebaseapp.com",
+  databaseURL: "https://kjyl-150415.firebaseio.com",
+  projectId: "kjyl-150415",
+  storageBucket: "kjyl-150415.appspot.com",
+  messagingSenderId: "725652377518"
+};
+
+var CMSFirebaseConfig = {
+    apiKey: "AIzaSyC5vrjT-1yrlIVz5drhoQUcuf7ugiSc6sE",
+    authDomain: "meeq-cms.firebaseapp.com",
+    databaseURL: "https://meeq-cms.firebaseio.com",
+    projectId: "meeq-cms",
+    storageBucket: "meeq-cms.appspot.com",
+    messagingSenderId: "933202199911"
+};
+
+var CMSFirebase = firebase.initializeApp(CMSFirebaseConfig);
+var APPFirebase = firebase.initializeApp(APPFirebaseConfig, "APP");
+
+</script>

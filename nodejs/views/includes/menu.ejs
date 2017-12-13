@@ -1,0 +1,44 @@
+<div id="left-menu">
+        <div id="logo">
+            BACON
+        </div>
+        <div style="padding: 0px;">
+            <div class="ui vertical accordion menu" id="menu">
+                <a class="item" data-tab="dashboard" href="/">
+                    <i class="home icon"></i>
+                    <div class="text">Dashboard</div>
+                </a>
+                <script>
+                    $(function() {
+                        $("a.creataccount").click(function() {
+                            $(".private").slideToggle(200);
+                        });
+                    });
+                </script>
+                <a class="item creataccount">
+                    <i class="users icon"></i>
+                    <div class="text">創建帳號</div>
+                </a>
+                <a class="item private" href="/baconcms" style="background-color:#e53b3b ; color: rgb(255, 255, 255); font-size: 12px; padding: 13px; cursor: pointer; display: none;" data-tab="orders">
+                    <i class="user icon"></i>
+                    <div class="text">BaconCMS</div>
+                </a>
+                <a class="item private" href="/baconusers"  style="background-color:#e53b3b ; color: rgb(255, 255, 255); font-size: 12px; padding: 13px; cursor: pointer; display: none;" data-tab="orders">
+                    <i class="users icon"></i>
+                    <div class="text">Bacon Users</div>
+                </a>
+                <a class="item" data-tab="products" href="/article">
+                    <i class="edit icon"></i>
+                    <div class="text">專欄文章</div>
+                </a>
+                <a class="item" href="/logout" data-tab="products">
+                    <i class="sign out icon"></i>
+                    <div class="text">登出</div>
+                </a>
+
+                <a href="javascript:void();" id="minimize" style="text-align: center; position: relative; bottom: 0;">
+                    <i class="arrow left icon" style="float: none; font-size: 13px; text-align: center; color: white;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
